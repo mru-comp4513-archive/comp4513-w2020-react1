@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lab 20a</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> 
     
     
     <!--The React JS libraries -->
@@ -27,35 +27,13 @@
 class Company extends React.Component {
 
   /* class constructor sets up initial state */
-  constructor(props) {
-      super(props);
-      this.state = {editing: false};
-      
-      
-      /* Unfortunately, "this" isn't bound to the correct context for React 
-         when using methods inside classes. The work around is to call bind
-         or use arrow function syntax, which will bind "this" correctly.
-      */      
-      // this.edit = this.edit.bind(this);
-      // this.save = this.save.bind(this);
-  }
-  
-                     
-  /* Here we are defining some helper functions that change state ... 
-     notice the use of setState() ... it's a bit like PHP, which uses 
-     the setcookie() function to change a cookie, but $_COOKIE to retrieve
-     a cookie */
 
   
-  edit = () => {
-      this.setState({editing: true});
-  }
-  
-  save = () => {
-      this.setState({editing: false});
-  }   
+                     
+  /* Here you will define some helper functions that change state */
+ 
                             
-  renderNormal()  {
+  render()  {
     return (
       <article className="box media ">
         <div className="media-left">
@@ -74,44 +52,6 @@ class Company extends React.Component {
         </div>                     
       </article>
     );
-  }
-  
-  renderEdit()  {
-    return (
-      <article className="box media ">
-        <div className="media-left">
-              <figure className="image is-128x128">
-                <img src={"images/" + this.props.symbol + ".svg"} />
-              </figure>
-        </div>
-        <div className="media-content">
-            <h2><input type="text" className="input" 
-                       defaultValue={this.props.children} /></h2>
-            <p><strong>Symbol:</strong> 
-              <input type="text" 
-                className="input" defaultValue={this.props.symbol} /></p>
-            <p><strong>Sector:</strong> 
-              <input type="text" 
-                className="input" defaultValue={this.props.sector} /></p>
-            <p><strong>HQ:</strong> 
-              <input type="text" className="input"
-                defaultValue={this.props.hq} /></p>
-        </div>
-        <div className="media-right">
-          <button className="button is-info" onClick={this.save}>    
-             Save</button>
-        </div>                     
-      </article>
-    );
-  }  
-  
-  
- /* we will render the component differently depending on our state (whether use has clicked edit button) */
-  render() {
-    if (this.state.editing)
-       return this.renderEdit();
-    else
-        return this.renderNormal();
   }
   
                             

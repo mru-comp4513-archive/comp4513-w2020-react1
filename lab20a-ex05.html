@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lab 20a</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-   
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script> 
+    
     
     <!--The React JS libraries -->
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
@@ -17,19 +17,6 @@
     
 <script type="text/babel">
 
-const Header = props =>
-          <section className="hero is-primary is-small has-background-link">
-            <div className="hero-body">
-              <div className="container">
-                <h1 className="title">React Tutorial</h1>
-                <h2 className="subtitle">
-                  { props.subtitle }
-                </h2>
-              </div>
-            </div>
-          </section>;
-
-
 /* Here you will be using the props collection to access the element 
   attributes */
 class Company extends React.Component {
@@ -38,14 +25,14 @@ class Company extends React.Component {
       <article className="box media ">
         <div className="media-left">
               <figure className="image is-128x128">
-                <img src={ "images/" + this.props.symbol + ".svg"  } />
+                <img src="images/FB.svg" />
               </figure>
         </div>
         <div className="media-content">
-            <h2>{this.props.children}</h2>
-            <p><strong>Symbol:</strong> {this.props.symbol}</p>
-            <p><strong>Sector:</strong> {this.props.sector}</p>
-            <p><strong>HQ:</strong> {this.props.hq}</p>
+            <h2></h2>
+            <p><strong>Symbol:</strong> </p>
+            <p><strong>Sector:</strong> </p>
+            <p><strong>HQ:</strong> </p>
         </div>
         <div className="media-right">
           <button className="button is-link">Edit</button>
@@ -57,24 +44,27 @@ class Company extends React.Component {
    
 /* Here you will be adding attributes (and a child element) 
    to our <Company> elements. These will be accessing within the 
-   component via the props collection. */
-
+   component via the props collection. */   
+   
 class App extends React.Component {
   render() {
     return (
       <main className="container">
-          <Header subtitle="Using Props" />
+          <section className="hero is-primary is-small has-background-link">
+            <div className="hero-body">
+              <div className="container">
+                <h1 className="title">React Tutorial</h1>
+                <h2 className="subtitle">
+                  Adding multiple instances
+                </h2>
+              </div>
+            </div>
+          </section>
         
           <section  className="content box ">
-            <Company symbol="FB" sector="Internet Software" 
-           hq="Menlo Park, California">FaceBook</Company>
-        <Company symbol="GOOG" sector="Information Technology" 
-     hq="Mountain View, California">Alphabet Inc Class A</Company>
-        <Company symbol="AAPL" sector="Information Technology" 
-           hq="Cupertino, California">Apple</Company>
-        <Company symbol="T" sector="Telecommunications Services" 
-           hq="Dallas, Texas">AT&T</Company>
-      
+            <Company  />
+            <Company  />
+            <Company  />                
           </section>
       </main>      
     );

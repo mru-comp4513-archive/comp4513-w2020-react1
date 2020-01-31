@@ -21,10 +21,41 @@
    Notice how we have moved the content out of the markup and into a data array in the component's state
    Notice also then that the parent is responsible for populating the state of its children components
 */
-
-
-
-
+class Portfolio extends React.Component {
+  
+  /* the parent will contain the data needed for the children */
+  constructor(props) {
+      super(props);
+      this.state = {
+          companies: [
+              {name: "FaceBook", symbol: "FB", sector: "Internet Software", hq: "Menlo Park, California"},
+              {name: "Alphabet Inc Class A", symbol: "GOOG", sector: "Information Technology", hq: "Mountain View, California"},
+              {name: "Apple", symbol: "AAPL", sector: "Information Technology", hq: "Cupertino, California"},
+              {name: "AT&T", symbol: "T", sector: "Telecommunications Services", hq: "Dallas, Texas"}
+          ]
+      };
+  }  
+  
+  /* This function will be responsible for generating a single populated Company element from 
+     the passed company data literal */
+  createCompany(obj, ind) {
+                    return (<Company symbol={obj.symbol} 
+                                    sector={obj.sector} 
+                                    hq={obj.hq} 
+                                    key={ind}
+                                    index={ind}>{obj.name}</Company>)
+  }
+  
+  /* the render for this component will loop through our data and generate the appropriate Company elements */              
+  render() {
+      return (
+          <div>
+            { this.state.companies.map(this.createCompany) }
+          </div>
+          );
+  }
+    
+}
 
 class Company extends React.Component {
 
@@ -108,10 +139,7 @@ class App extends React.Component {
     return (
       <main className="container">
           <Header subtitle="Preserving State Changes" />
-
-
-
-
+          <Portfolio />
       </main>      
     );
   }
